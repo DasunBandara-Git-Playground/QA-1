@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class CoinsNew {
     public static void main(String[] args) {
-        int[] coins = {1,2,5,10,50,20,100};
-        int total = 38;
-        System.out.println(getNoOfCoins(coins, total));
+        int[] coins = {2,5,10,20,50,100};
+        int total = 85;
+        System.out.println("no of coins = "+getNoOfCoins(coins, total));
 
     }
 
@@ -15,18 +15,12 @@ public class CoinsNew {
         int noOfCoins = 0;
         int temp = total;
         for (int i = coins.length-1; i >= 0; i--) {
-            if (temp/coins[i] == 0) {
-                continue;
-            }else {
+            if (temp >= coins[i]) {
                 noOfCoins += temp / coins[i];
                 temp = temp % coins[i];
             }
-
+            if (temp == 0) return noOfCoins;
         }
-        if (temp == 0) {
-            return noOfCoins;
-        }else {
-            return -1;
-        }
+        return -1;
     }
 }
